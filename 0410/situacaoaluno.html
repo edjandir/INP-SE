@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do aluno</title>
+</head>
+<body>
+    <h1>Situação do aluno</h1>
+    <p id="mensagens" style="color: red"></p>
+    <!--
+        Verifique se os campos foram preenchidos, mostre mensagens de erro 
+        caso estejam vazios
+    -->
+
+    <p>Nome do aluno: <input type="text" name="nome" id="nome"></p>
+    <p>1a. nota: <input type="number" name="nota1" id="nota1"></p>
+    <p>2a. nota: <input type="number" name="nota2" id="nota2"></p>
+    <input type="button" value="Resultado" id="btnResultado">
+
+    <h3 id="media"></h3>
+    <h3 id="resultado"></h3>
+
+    <script src="situacaoaluno.js"></script>
+</body>
+</html>
