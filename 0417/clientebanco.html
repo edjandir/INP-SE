@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do cliente</title>
+
+    <style>
+        body {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+    </p>
+    <p>
+        <label for="idade">Idade:</label>
+        <input type="number" name="idade" id="idade">
+    </p>
+    <p>
+        <label for="saldo">Saldo:</label>
+        <input type="number" name="saldo" id="saldo">
+    </p>
+    <p>
+        <label for="cartao">Tem cartão:</label>
+        <input type="checkbox" name="cartao" id="cartao">
+    </p>
+    <p>
+        <button id="cadastrar">Cadastrar Cliente</button>
+    </p>
+    <p id="resposta"></p>
+
+    <script src="clientebanco.js"></script>
+</body>
+</html>
