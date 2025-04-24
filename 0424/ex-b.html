@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular valor de multa</title>
+
+    <style>
+        body {
+            display: flex;
+            padding: 50px;
+            align-items: center;
+        }
+        #dados {
+            margin-bottom: 15px;
+        } 
+
+        #dados div {
+            margin-bottom: 10px;
+        }
+
+        #conteudo {
+            margin-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <img src="ex-a.png" width="200" height="200" alt="">
+    <div id="conteudo">
+        <h2>Programa Verificar Velocidade</h2>
+        <div id="dados">
+            <div>
+                <label for="velocidadePermitida">Velocidade permitida:</label>
+                <input type="number" name="velocidadePermitida" id="velocidadePermitida">
+            </div>
+            <div>
+                <label for="velocidadeCondutor">Velocidade condutor:</label>
+                <input type="number" name="velocidadeCondutor" id="velocidadeCondutor">
+            </div>
+        </div>
+        <button type="button" id="button" onclick="calcularMulta()">
+                Verificar velocidade
+        </button>
+        <p id="resposta"></p>
+    </div>
+    <script>
+        function calcularMulta() {
+            const velocidadeCondutor = Number(document.getElementById('velocidadeCondutor').value)
+            const velocidadePermitida = Number(document.getElementById('velocidadePermitida').value)
+            
+            const percentual = velocidadeCondutor / velocidadePermitida
+
+            //se percentual for <=1 sem multa, > 1 e < 1.2 multa leve e > 1.2 multa grave
+            let resposta = document.getElementById('resposta')
+            resposta.style.color = 'green'
+
+            let mensagem = `Sua velocidade é ${velocidadeCondutor} km/h. Sem multa.`
+
+            if ((percentual > 1) && (percentual <= 1.2)) {
+                resposta.style.color = 'orange'
+                mensagem = `Sua velocidade é ${velocidadeCondutor} km/h. Multa leve.`
+            } else if (percentual > 1.2) {
+                resposta.style.color = 'red'
+                mensagem = `Sua velocidade é ${velocidadeCondutor} km/h. Multa grave.`
+            }
+
+            resposta.textContent = mensagem
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            padding: 50px;
+            align-items: center;
+        }
+        #dados {
+            margin-bottom: 15px;
+        } 
+        #conteudo {
+            margin-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <img src="ex-a.png" width="200" height="200" alt="">
+    <div id="conteudo">
+        <h2>Programa par ou impar</h2>
+        <div id="dados">
+            <label for="numero">Número:</label>
+            <input type="number" name="numero" id="numero">
+        </div>
+        <button type="button" id="button" onclick="parOuImpar()">
+                Verificar se é par ou ímpar
+        </button>
+        <p id="resposta"></p>
+    </div>
+    <script>
+        function parOuImpar() {
+            const numero = Number(document.getElementById('numero').value)
+            let resposta = document.getElementById('resposta')
+            if (numero % 2 == 0) {
+                resposta.textContent = `O número ${numero} é par.`
+            } else {
+                resposta.textContent = `O número ${numero} é ímpar.`
+            }
+        }
+    </script>
+</body>
+</html>
