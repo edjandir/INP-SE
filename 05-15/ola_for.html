@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá For</title>
+</head>
+<body>
+    <div>
+        <label for="inicio">Início:</label>
+        <input type="number" name="inicio" id="inicio">
+    </div>
+    <div>
+        <label for="fim">Fim:</label>
+        <input type="number" name="fim" id="fim">
+    </div>
+    <button onclick="iniciar()">Iniciar contagem</button>
+    <p id="resposta"></p>
+
+    <script>
+        //Verificar se o fim é maior do que o início
+        //Verificar se o intervalo é menor ou igual a 20
+        //Caso uma das situações der erro então mostrar mensagem de erro na resposta em vermelho
+        function iniciar() {
+            const inicio = parseInt(document.getElementById("inicio").value);
+            const fim = parseInt(document.getElementById("fim").value);
+            const decrescente = fim < inicio;
+            
+            let resposta = document.getElementById("resposta");
+            //limpa conteúdo anterior do parágrafo que mostra a contagem
+            resposta.innerHTML = "";
+            console.log(decrescente);
+
+            // if (fim <= inicio) {
+            //     resposta.innerHTML = "O número fim tem que ser maior do que o inicio";
+            //     resposta.style.color = 'red';
+            //     return;
+            // }
+            
+            if (Math.abs(fim - inicio) > 20){
+                resposta.innerHTML = "O intervalo deve ser menor ou igual a 20";
+                resposta.style.color = 'red';
+                return;               
+            }
+
+            if (decrescente) {
+                console.log('' + fim + ',' + inicio);
+                for (let i=inicio; i >= fim; i--) {
+                    //muda o conteúdo do paragráfo para conteúdo anterior mais quebra de linha mais valor 'i'
+                    resposta.innerHTML = resposta.innerHTML + '<br>' + i;
+                }
+            } else {
+                for (let i=inicio; i <= fim; i++) {
+                    //muda o conteúdo do paragráfo para conteúdo anterior mais quebra de linha mais valor 'i'
+                    resposta.innerHTML = resposta.innerHTML + '<br>' + i;
+                }               
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<script>
+    // função recebe 2 parâmetros: nota e media
+    //Essa função não retorna valor. Em algumas linguagens (Pascal..)
+    //ela é uma procedure
+    function exibirSituacao(nota, media, recuperacao) {
+        if (nota >= media) { // compara o valor das variáveis
+            alert("Aprovado");
+        } else {
+            if (nota >= recuperacao) {
+                alert("Recuperação");
+            }
+            else {
+                alert("Reprovado");
+            }
+        }
+
+    }
+
+    function retorna_situacao(nota, media, recuperacao) {
+        let situacao = "Aprovado";
+
+        if (nota < media) {
+            if (nota >= recuperacao) {
+                situacao = "Recuperação";
+            }
+            else {
+                situacao = "Reprovado";
+            }
+        }
+        return situacao;
+    }
+
+    var prova1 = Number(prompt("Qual Nota: ")); // lê uma nota
+    // chama a função exibirSituacao() passando 2 argumentos
+    //exibirSituacao(prova1, 6, 5);
+    //a função retorna_situação pode retornar "Aprovado", "Recuperação" ou "Reprovado"
+    alert(retorna_situacao(prova1, 6, 5));
+</script>

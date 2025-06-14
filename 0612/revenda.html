@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenda</title>
+    <style>
+        img {
+            float: left;
+            margin-right: 20px;
+        }
+        hr {
+            color: lightgray;
+        }
+        body {
+            padding-left: 20px;
+            padding-right: 20px ;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/herbie.png" alt="">
+    <h1>Revenda Herbie</h1>
+    <hr>
+    <p>Modelo:
+        <input type="text" id="inModelo">
+    </p>
+    <p>Preço:
+        <input type="text" id="inPreco">
+        <input type="button" value="Adicionar" onclick="adicionarCarro()" id="btAdicionar">
+    </p>
+    <button id="btListar" onclick="listarCarros()">Listar todos</button>
+    <button id="btFiltrar" onclick="filtrarCarros()">Filtrar por preço</button>
+    <pre id="outLista"></pre>
+
+    <script>
+        var carros = []
+
+        function adicionarCarro() {
+            let inModelo = document.getElementById("inModelo");
+            let inPreco = document.getElementById("inPreco");
+
+            let modelo = inModelo.value;
+            let preco = Number(inPreco.value);
+
+            //verifica preenchimento dos campos
+            if ((modelo == "") || (preco == 0) || isNaN(preco)) {
+                alert("Informe corretamento os dados.");
+                inModelo.focus;
+                return;
+            }
+            
+            carros.push({modelo: modelo, preco: preco});
+
+            //limpa os campos
+            inModelo.value = "";
+            inPreco.value = "";
+            inModelo.focus();
+
+            listarCarros();
+        }
+
+        function listarCarros() {
+            // verifica se vetor está vazio
+            if (carros.length == 0) {
+                alert("Não há carros na lista");
+                return;
+            }
+
+            let lista = "";
+            // percorre os elementos do vetor
+            for (var i = 0; i < carros.length; i++) {
+                // adiciona à lista, cada objeto do vetor
+                lista += carros[i].modelo + " - R$: " + carros[i].preco.toFixed(2) + "\n";
+            }
+            // referencia elemento e altera conteúdo exibido
+            document.getElementById("outLista").textContent = lista;
+        }
+
+        function filtrarCarros() {
+            // faz a leitura do valor máximo a partir do método prompt
+            var maximo = Number(prompt("Qual o valor máximo que o cliente deseja pagar?"));
+            // se não preencheu ou conteúdo inválido ...
+            if (maximo == 0 || isNaN(maximo)) {
+                return; // ... retorna
+            }
+            // para concatenar lista de carros que obedecem ao critério de pesquisa / filtro
+            var lista = "";
+            // percorre todos os elementos do vetor
+            for (var i = 0; i < carros.length; i++) {
+                // verifica se o preço é inferior (ou igual) ao máximo
+                if (carros[i].preco <= maximo) {
+                 lista += carros[i].modelo + " - R$: " + carros[i].preco.toFixed(2) + "\n";
+                }
+            }
+            var outLista = document.getElementById("outLista"); // cria referência a outLista
+            // se a lista esta vazia, significa que nenhum veículo foi encontrado (no for)
+            if (lista == "") {
+                outLista.textContent = "Não há carros com preço até R$ " + maximo.toFixed(2);
+            } else {
+                // senão, mostra os veículos obtidos
+                outLista.textContent = "Carros até R$ " + maximo.toFixed(2) +
+                "\n------------------------\n" + lista;
+            }
+        }
+
+    </script>
+</body>
+</html>

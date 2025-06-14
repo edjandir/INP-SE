@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cidades</title>
+    <style>
+        body {
+            padding: 30px;
+        }
+        #tabela {
+            margin-top: 20px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        #tabela th, #tabela td {
+            border: 1px solid black; /* Define a borda para as células */
+            padding: 8px;
+            text-align: left;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Lista de cidades</h1>
+    <p>
+        Cidade: <input id="nome-cidade" type="text" placeholder="Nome da cidade">
+        População: <input id="populacao-cidade" type="text" placeholder="População">
+    </p>
+    <button onclick="incluirCidade()">Incluir cidade</button>
+    <table id="tabela">
+        <tr>
+            <th>Cidade</th>
+            <th>População</th>
+        </tr>
+    </table>
+
+    <script>
+        var cidades = []
+
+        function limparTabela() {
+            var tabela = document.getElementById("tabela"); // Obtém a tabela pelo ID
+            var linhas = tabela.getElementsByTagName("tr"); // Obtém todas as linhas da tabela
+
+            // Percorre as linhas de trás para frente para evitar problemas ao remover elementos
+            for (var i = linhas.length - 1; i > 0; i--) { 
+                tabela.deleteRow(i);
+            }
+        }
+
+        function incluirCidade() {
+            const cidade =  [ document.getElementById("nome-cidade").value, 
+                document.getElementById("populacao-cidade").value]
+            cidades.push(cidade);
+
+            //montar tabela
+            limparTabela();
+            let tabela = document.getElementById("tabela")
+            for (item of cidades) {
+                console.log(item)
+                let linha = tabela.insertRow();
+                let celula1 = linha.insertCell(0);
+                let celula2 = linha.insertCell(1);
+                celula1.innerHTML = item[0];
+                celula2.innerHTML = item[1]
+            }
+        }
+    </script>
+</body>
+</html>

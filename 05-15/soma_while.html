@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma Intervalo</title>
+</head>
+<body>
+    <div>
+        <label for="inicio">Início:</label>
+        <input type="number" name="inicio" id="inicio">
+    </div>
+    <div>
+        <label for="fim">Fim:</label>
+        <input type="number" name="fim" id="fim">
+    </div>
+    <button onclick="somar()">Somar número entre o intervalo</button>
+    <p id="resposta"></p>
+
+    <script>
+        //Verificar se o fim é maior do que o início
+        //Verificar se o intervalo é menor ou igual a 20
+        //Caso uma das situações der erro então mostrar mensagem de erro na resposta em vermelho
+        function somar() {
+            const inicio = parseInt(document.getElementById("inicio").value);
+            const fim = parseInt(document.getElementById("fim").value);
+
+            let resposta = document.getElementById('resposta')
+
+            if (fim < inicio) {
+                resposta.innerHTML = "O fim deve ser maior que o início";
+                resposta.style.color = "red";
+                return;
+            }
+            let num = inicio + 1;
+            let soma = 0;
+
+            while (num < fim) {
+                soma = soma + num;
+                num = num + 1;
+                console.log('' + num + "," + soma);
+            }
+
+            resposta.innerHTML = `<strong>A soma dos números entre ${inicio} e ${fim} é ${soma}.</strong>`;
+        }
+    
+    </script>
+</body>
+</html>

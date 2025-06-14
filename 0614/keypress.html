@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Digite uma palavra:
+        <input type="text" name="palavra" id="palavra">
+    </p>
+    <script>
+        var input = document.getElementById("palavra");
+        input.addEventListener('keypress', function(evento){
+            alert("Você digitou: " + evento.key);
+        });
+    </script>
+</body>
+</html>
