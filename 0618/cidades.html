@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shows da Galinha Pintadinha</title>
+    <style>
+        body {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cidades visitadas pela Turma da Galinha Pintadinha</h1>
+    <p>Cidade: <input type="text" id="nome_cidade"></p>
+    <button onclick="incluirCidade()">Incluir cidade</button>
+    <ul id="lista">
+
+    </ul>
+    <button onclick="limparLista()">Limpar lista</button>
+    <script>
+        
+        var lista_local = localStorage.getItem('cidades')
+        var lista = []
+        if (lista_local) {
+            lista = lista_local.split(',')
+            mostra_cidades(lista)
+        }
+
+        function mostra_cidades(lista) {
+            let resposta = document.getElementById('lista')
+            resposta.innerHTML=''
+            for (item of lista) {
+                const novoItem = document.createElement('li')
+                novoItem.textContent = item
+                resposta.appendChild(novoItem)
+            }
+        }
+
+        function incluirCidade() {
+            let nome = document.getElementById('nome_cidade').value
+            lista.push(nome);
+            localStorage.setItem('cidades', lista)
+            mostra_cidades(lista);
+        }
+
+        function limparLista() {
+            localStorage.removeItem('cidades');
+            let resposta = document.getElementById('lista')
+            resposta.innerHTML=''
+        }
+    </script>
+</body>
+</html>
